@@ -1,0 +1,64 @@
+{% load static %}
+<html>
+<head>
+	<title>Мой блог</title>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+
+	<link rel="shortcut icon" href="css/images/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<div class="shell">
+	<div class="upper__main">
+		<div class="upper__main-img">
+			<img src="{% static 'css/images/Progdevice.png' %}" alt="" width="64" height="64">
+		</div>
+		<div class="upper__main-text">
+			<h3>Progdevice - Блог о IT</h3>
+		</div>
+	</div>
+	<div class="border">
+
+		<div id="navigation">
+			<ul>
+			    <li><a href="/" class="active">Главная</a></li>
+				<li><a href="https://t.me/progdevice" class="active">Телеграм🌌</a></li>
+			    <li><a href="/admin">Войти</a></li>
+			</ul>
+		</div>
+
+		<div id="main">
+			<div id="content" class="left">
+				
+				<div class="projects">
+					<h3>Посты</h3>
+					{% for post in post_list %}
+					<div class="item">
+						<div class="image left">
+							<a href="#"><img src="{{ post.img.url }}" alt="" width="200px"/></a>
+						</div>
+						<div class="text left">
+							<h4><a href="{{ post.id }}">{{ post.title }}</a></h4>
+							<p>{{ post.description|slice:":150" }}...</p>
+							<p>{{ post.author }}</p>
+							<h5>{{ post.date }}</h5>
+						</div>
+						<div class="cl">&nbsp;</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+			
+			<div class="cl">&nbsp;</div>
+		</div>
+		
+
+	</div>
+	
+	<div id="footer">
+		<p class="copy right">Copyright &copy;  2022 </p>
+	</div>
+</div>
+</body>
+</html>
